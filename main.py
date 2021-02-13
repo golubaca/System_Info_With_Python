@@ -8,6 +8,7 @@ from PySide2.QtGui import QGuiApplication, QIcon
 from PySide2.QtQml import QQmlApplicationEngine
 from PySide2.QtCore import QObject, Slot, Signal, QTimer
 
+
 # CLASS MAIN WINDOW
 class MainWindow(QObject):
     def __init__(self):
@@ -47,7 +48,7 @@ class MainWindow(QObject):
         # FORMAT SIZES
         def get_size(bytes, suffix="B"):
             factor = 1024
-            for unit in ["", "M", "G", "T", "P"]:
+            for unit in ["", "K", "M", "G", "T", "P"]:
                 if bytes < factor:
                     return f"{bytes:.2f}{unit}{suffix}"
                 bytes /= factor
@@ -61,7 +62,7 @@ class MainWindow(QObject):
             # CIRCULAR PROGRESS BAR
             self.percentageCPU.emit(psutil.cpu_percent())
             self.percentageRAM.emit(svmen.percent)
-            self.percentageGPU.emit(gpus[0].load*100)
+            self.percentageGPU.emit(gpus[0].load * 100)
 
             # CPU FREQUENCY
             self.cpuFrequencyCurrentInfo.emit(f"{cpufreq.current:.2f}Mhz")
@@ -81,7 +82,7 @@ class MainWindow(QObject):
         # FORMAT SIZES
         def get_size(bytes, suffix="B"):
             factor = 1024
-            for unit in ["", "M", "G", "T", "P"]:
+            for unit in ["", "K", "M", "G", "T", "P"]:
                 if bytes < factor:
                     return f"{bytes:.2f}{unit}{suffix}"
                 bytes /= factor
